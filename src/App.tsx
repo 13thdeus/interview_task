@@ -19,6 +19,7 @@ import {
   View,
 } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
+import { useTranslation } from "react-i18next";
 
 const Section: React.FC<PropsWithChildren<{
   title: string;
@@ -50,6 +51,8 @@ const Section: React.FC<PropsWithChildren<{
 const App = () => {
   const isDarkMode = useColorScheme() === "dark";
 
+  const {t} = useTranslation();
+
   const backgroundStyle = {
     backgroundColor: "#ccc",
   };
@@ -71,6 +74,7 @@ const App = () => {
             <Section title="Step One">
               Edit <Text style={styles.highlight}>App.tsx</Text> to change this
               screen and then come back to see your edits.
+              {t("yes")}
             </Section>
             <Section title="Learn More">
               Read the docs to discover what to do next:
