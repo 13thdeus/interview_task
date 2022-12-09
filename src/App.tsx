@@ -20,6 +20,11 @@ import {
 } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { useTranslation } from "react-i18next";
+import { store } from "./core/store/store";
+import { persistor } from "./core/store/storePersistor";
+import { Provider } from "react-redux";
+import { PersistGate } from "redux-persist/integration/react";
+import { i18next } from "./common/localization/localization";
 
 const Section: React.FC<PropsWithChildren<{
   title: string;
@@ -51,38 +56,40 @@ const Section: React.FC<PropsWithChildren<{
 const App = () => {
   const isDarkMode = useColorScheme() === "dark";
 
-  const {t} = useTranslation();
-
   const backgroundStyle = {
     backgroundColor: "#ccc",
   };
 
   return (
-    <NavigationContainer>
-      <SafeAreaView style={backgroundStyle}>
-        <StatusBar
-          barStyle={isDarkMode ? "light-content" : "dark-content"}
-          backgroundColor={backgroundStyle.backgroundColor}
-        />
-        <ScrollView
-          contentInsetAdjustmentBehavior="automatic"
-          style={backgroundStyle}>
-          <View
-            style={{
-              backgroundColor: "#fff",
-            }}>
-            <Section title="Step One">
-              Edit <Text style={styles.highlight}>App.tsx</Text> to change this
-              screen and then come back to see your edits.
-              {t("yes")}
-            </Section>
-            <Section title="Learn More">
-              Read the docs to discover what to do next:
-            </Section>
-          </View>
-        </ScrollView>
-      </SafeAreaView>
-    </NavigationContainer>
+    <Provider store={store}>
+      <PersistGate loading={null} persistor={persistor} >
+        <NavigationContainer>
+          <SafeAreaView style={backgroundStyle}>
+            <StatusBar
+              barStyle={isDarkMode ? "light-content" : "dark-content"}
+              backgroundColor={backgroundStyle.backgroundColor}
+            />
+            <ScrollView
+              contentInsetAdjustmentBehavior="automatic"
+              style={backgroundStyle}>
+              <View
+                style={{
+                  backgroundColor: "#fff",
+                }}>
+                <Section title="Step One">
+                  Edit <Text style={styles.highlight}>App.tsx</Text> to change this
+                  screen and then come back to see your edits.
+                  {i18next.t("yes")}
+                </Section>
+                <Section title="Learn More">
+                  Read the docs to discover what to do next:
+                </Section>
+              </View>
+            </ScrollView>
+          </SafeAreaView>
+        </NavigationContainer>
+      </PersistGate>
+    </Provider>
   );
 };
 

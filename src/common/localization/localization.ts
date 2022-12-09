@@ -1,11 +1,10 @@
-import i18n from "i18next";
-import {getI18n, initReactI18next} from "react-i18next";
-import {TFuncKey} from "i18next";
-import {findBestAvailableLanguage} from "react-native-localize";
-import {I18nManager} from "react-native";
-import {setDateLocale} from "./dateFormatter";
-import type {en} from "./translations/en";
-import type {ru} from "./translations/ru";
+import i18n, { TFuncKey } from "i18next";
+import { getI18n, initReactI18next } from "react-i18next";
+import { findBestAvailableLanguage } from "react-native-localize";
+import { I18nManager } from "react-native";
+import { setDateLocale } from "./dateFormatter";
+import type { en } from "./translations/en";
+import type { ru } from "./translations/ru";
 import { LanguageEnum } from "../api/common/LanguageEnum";
 
 // export enum LanguageEnum {
@@ -14,8 +13,8 @@ import { LanguageEnum } from "../api/common/LanguageEnum";
 // }
 
 export const languages = [
-  {languageTag: LanguageEnum.En, isRTL: false, name: "English"},
-  {languageTag: LanguageEnum.Ru, isRTL: false, name: "Русский"},
+  { languageTag: LanguageEnum.En, isRTL: false, name: "English" },
+  { languageTag: LanguageEnum.Ru, isRTL: false, name: "Русский" },
 ] as const;
 
 export const fallbackLng = languages[0].languageTag;
@@ -28,24 +27,25 @@ const getLanguageByTag = (tag?: string) => languages.find(el => el.languageTag =
 export type LanguageResource = typeof en | typeof ru;
 export type TFuncKeyApp<TPrefix = undefined> = TFuncKey<"translation", TPrefix, LanguageResource>;
 
-const translationGetters: {[key: string]: (() => {[key: string]: LanguageResource}) | undefined} = {
+const translationGetters: { [key: string]: (() => { [key: string]: LanguageResource }) | undefined } = {
   en: () => require("./translations/en"),
   ru: () => require("./translations/ru"),
 };
 
-i18n
+export const intlInitPromise = i18n
   .use(initReactI18next)
   .init({
     resources: {},
     fallbackLng,
-    interpolation: {escapeValue: false},
-    react: {useSuspense: false},
+    interpolation: { escapeValue: false },
+    react: { useSuspense: false },
   });
 
 export const getLanguage = () => getLanguageByTag(getInterfaceLanguage()?.languageTag) || languages[0];
 export const getInterfaceLanguage = () => findBestAvailableLanguage(languagesTags);
 
 export async function setLanguage(inputLanguage?: Languages): Promise<void> {
+  await intlInitPromise;
   const language = inputLanguage || getLanguage();
   i18n.addResourceBundle(
     language.languageTag,
