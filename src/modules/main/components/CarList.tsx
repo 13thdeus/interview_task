@@ -8,6 +8,7 @@ import {CarCarousel} from "./CarCarousel";
 
 interface ICarListProps {
   cars: CarDto[];
+  onCarChanged: (index: number) => void;
 }
 
 export const CarList: FC<ICarListProps> = memo((props) => {
@@ -16,7 +17,7 @@ export const CarList: FC<ICarListProps> = memo((props) => {
       <LinearGradient colors={[Colors.gradientPrimary, Colors.gradientSecondary]} style={styles.background} />
       <SafeAreaView style={styles.contentContainer}>
         <Image source={ImageResources.tes_logo} />
-        <CarCarousel data={props.cars} />
+        <CarCarousel data={props.cars} onCarChanged={props.onCarChanged}/>
         <View style={styles.avatarContainer}>
           <Image source={ImageResources.avatar_mock} style={styles.avatarStyle} />
         </View>

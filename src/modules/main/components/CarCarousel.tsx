@@ -1,4 +1,4 @@
-import React, {FC, memo, useState} from "react";
+import React, {FC, memo, useEffect, useState} from "react";
 import {StyleSheet, View, ViewStyle} from "react-native";
 import Carousel from "react-native-snap-carousel";
 import {CarDto} from "../../../common/api";
@@ -7,10 +7,15 @@ import {CarCarouselItem} from "./CarCarouselItem";
 
 interface IProps {
   data: CarDto[];
+  onCarChanged: (index: number) => void;
 }
 
 export const CarCarousel: FC<IProps> = memo((props) => {
   const [activeSlide, setActiveSlide] = useState(0);
+
+  useEffect(() => {
+    props.onCarChanged(activeSlide);
+  }, [activeSlide, props.onCarChanged]);
 
   return (
     <>

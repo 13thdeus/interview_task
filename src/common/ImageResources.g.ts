@@ -20,4 +20,5 @@ export class TabBarResources {
 export class ImageResources {
   static readonly avatar_mock: ImageURISource = require("../../resources/images/avatar_mock.png");
   static readonly tes_logo: ImageURISource = require("../../resources/images/tes_logo.png");
+  static readonly widget_warning: ImageURISource = require("../../resources/images/widget_warning.png");
 }

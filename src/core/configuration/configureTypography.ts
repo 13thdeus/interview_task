@@ -29,7 +29,6 @@ export function configureTypography() {
         fontWeight: "normal",
         fontSize: 15,
         lineHeight: 18,
-        textTransform: "uppercase",
       },
       H5: {
         fontFamily: Fonts.bandRegular,
