@@ -7,6 +7,8 @@ import {Colors, CommonStyles, CurrencySymbol, DesignGridSize} from "../../../cor
 import {getTimeValue} from "../../../common/helpers/timeHelpers";
 import {useTranslation} from "react-i18next";
 import {WidgetValue} from "./WidgetValue";
+import LinearGradient from "react-native-linear-gradient";
+import {WidgetIcon} from "./WidgetIcon";
 
 interface IProps {
   widget: CarWidgetDto;
@@ -17,10 +19,11 @@ export const WidgetItem: FC<IProps> = ({countInLine, widget}) => {
   const widgetItemData = widgetData[widget.id];
   const {t} = useTranslation();
 
-  console.log({widget, widgetItemData});
-
   return (
     <View style={styles.container}>
+      {widget.layout.gradientColors &&
+        <LinearGradient colors={widget.layout.gradientColors} style={styles.backgroundStyle} />
+      }
       <Brand.H4 text={widget.title} />
       <WidgetValue widget={widget} widgetData={widgetItemData} countInLine={countInLine} />
       <View style={{height: DesignGridSize * DesignGridSize / countInLine / 2}} />
@@ -31,6 +34,7 @@ export const WidgetItem: FC<IProps> = ({countInLine, widget}) => {
           {widgetItemData.priceUnit && <Brand.H5 text={widgetItemData.priceUnit} color={Colors.secondaryText} />}
         </View>
       </View>
+      {widget.layout.icon && <WidgetIcon icon={widget.layout.icon} countInLine={countInLine} />}
     </View>
   );
 };
@@ -44,7 +48,9 @@ const styles = StyleSheet.create({
     elevation: 2,
     margin: DesignGridSize,
     justifyContent: "space-between",
+    overflow: "hidden",
   } as ViewStyle,
+  backgroundStyle: StyleSheet.absoluteFill as ViewStyle,
   warningIcon: {
     width: 13,
     height: 13,

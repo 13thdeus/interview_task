@@ -1,9 +1,13 @@
 import {CarWidgetDto, WidgetDataSourceEnum, WidgetUnitType, WidgetValueTypeEnum} from "../src/common/api";
+import {MockIconsResources} from "../src/common";
 
 const common: CarWidgetDto[] = [{
   id: "fines",
   title: {ru: "Штрафы", en: "Fines"},
-  icon: undefined,
+  layout: {
+    icon: MockIconsResources.auto,
+    gradientColors: undefined,
+  },
   dataSource: WidgetDataSourceEnum.Server,
   serverSource: "some url",
   unitType: WidgetUnitType.Custom,
@@ -12,7 +16,10 @@ const common: CarWidgetDto[] = [{
 }, {
   id: "parking",
   title: {ru: "Парковка", en: "Parking"},
-  icon: undefined,
+  layout: {
+    icon: MockIconsResources.travel,
+    gradientColors: undefined,
+  },
   dataSource: WidgetDataSourceEnum.Server,
   serverSource: "some url",
   unitType: WidgetUnitType.Time,
@@ -20,7 +27,10 @@ const common: CarWidgetDto[] = [{
 }, {
   id: "gas",
   title: {ru: "АЗС", en: "GAS Station"},
-  icon: undefined,
+  layout: {
+    icon: MockIconsResources.market,
+    gradientColors: undefined,
+  },
   dataSource: WidgetDataSourceEnum.Server,
   serverSource: "some url",
   unitType: WidgetUnitType.Distance,
@@ -31,7 +41,10 @@ export const widgets: CarWidgetDto[][] = [
   [{
     id: "fuel",
     title: {ru: "Заправить", en: "Fueling"},
-    icon: undefined,
+    layout: {
+      icon: MockIconsResources.fuel,
+      gradientColors: ["#FEFFFF", "#F4FAFF"],
+    },
     dataSource: WidgetDataSourceEnum.Fuel,
     serverSource: "some url",
     unitType: WidgetUnitType.Custom,
@@ -47,7 +60,10 @@ export const widgets: CarWidgetDto[][] = [
     id: "maintenance",
     title: {ru: "Техобслуживание", en: "Maintenance"},
     subtitle: {ru: "Масло ДВС, фильтры", en: "Motor oil, filters"},
-    icon: undefined,
+    layout: {
+      icon: MockIconsResources.tech,
+      gradientColors: ["#FDFFFD", "#F9FEF6"],
+    },
     dataSource: WidgetDataSourceEnum.Tech,
     serverSource: "some url",
     unitType: WidgetUnitType.Custom,
@@ -62,7 +78,10 @@ export const electricWidgets: CarWidgetDto[][] = [
   [{
     id: "charge",
     title: {ru: "Зарядить", en: "Charge"},
-    icon: undefined,
+    layout: {
+      icon: MockIconsResources.auto,
+      gradientColors: ["#FEFFFF", "#F4FAFF"],
+    },
     dataSource: WidgetDataSourceEnum.Fuel,
     serverSource: "some url",
     unitType: WidgetUnitType.Custom,

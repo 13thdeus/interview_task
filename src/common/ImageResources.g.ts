@@ -9,6 +9,14 @@ import {ImageURISource} from "react-native";
  * https://github.com/svbutko/react-native-image-resource-generator
 */
 
+export class MockIconsResources {
+  static readonly auto: ImageURISource = require("../../resources/images/mockIcons/auto.png");
+  static readonly fuel: ImageURISource = require("../../resources/images/mockIcons/fuel.png");
+  static readonly market: ImageURISource = require("../../resources/images/mockIcons/market.png");
+  static readonly tech: ImageURISource = require("../../resources/images/mockIcons/tech.png");
+  static readonly travel: ImageURISource = require("../../resources/images/mockIcons/travel.png");
+}
+
 export class TabBarResources {
   static readonly auto: ImageURISource = require("../../resources/images/tabBar/auto.png");
   static readonly main: ImageURISource = require("../../resources/images/tabBar/main.png");

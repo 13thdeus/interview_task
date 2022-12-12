@@ -2,12 +2,12 @@ import {LocalizedTextDto} from "../../common/LocalizedTextDto";
 import {WidgetDataSourceEnum} from "./WidgetDataSourceEnum";
 import {WidgetValueTypeEnum} from "./WidgetValueTypeEnum";
 import {WidgetUnitType} from "./WidgetUnitType";
+import {ImageURISource} from "react-native";
 
 export interface ICarWidget {
   id: string;
   title: LocalizedTextDto;
   subtitle?: LocalizedTextDto;
-  icon?: string;
   dataSource: WidgetDataSourceEnum;
   serverSource: string;
   valueType: WidgetValueTypeEnum;
@@ -16,4 +16,8 @@ export interface ICarWidget {
   warningLevel?: number;
   warningText?: LocalizedTextDto;
   maxLevel?: number;
+  layout: {
+    gradientColors?: string[];
+    icon?: ImageURISource;
+  };
 }
