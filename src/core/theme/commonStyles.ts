@@ -29,6 +29,10 @@ export const CommonStyles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
   } as ViewStyle,
+  rowSpaceBetween: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+  } as ViewStyle,
   row: {
     flexDirection: "row",
   } as ViewStyle,

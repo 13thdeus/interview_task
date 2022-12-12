@@ -15,8 +15,24 @@ export const ru = {
     date: {
       defaultDate: "DD.MM.YYYY",
     },
+    time: {
+      sec: "~{{count}} сек",
+      min: "~{{count}} мин",
+      hrs: "~{{count}} ч",
+      day: "~{{count}} дн",
+    },
+    distance: {
+      meters: "{{count}} м",
+      kilometers: "{{count}} км",
+    },
     main: {
       subscriptionUntil: "Подписка до ",
+      valueTypes: {
+        exact: "{{value}}",
+        feature: "через {{value}}",
+        past: "{{value}} прошло",
+        new: "{{value}} новых",
+      }
     },
   },
 };

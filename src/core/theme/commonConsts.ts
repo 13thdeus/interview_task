@@ -36,3 +36,4 @@ export const StatusBarHeightAndroid = StatusBar.currentHeight || 0;
 export const StatusBarHeight = StatusBarHeightIos || StatusBarHeightAndroid;
 
 export const DesignGridSize = 8;
+export const CurrencySymbol = "₽";

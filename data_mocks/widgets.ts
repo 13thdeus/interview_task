@@ -17,7 +17,6 @@ const common: CarWidgetDto[] = [{
   serverSource: "some url",
   unitType: WidgetUnitType.Time,
   valueType: WidgetValueTypeEnum.Past,
-  subtitle: {ru: "№1129", en: "#1129"},
 }, {
   id: "gas",
   title: {ru: "АЗС", en: "GAS Station"},
@@ -25,8 +24,7 @@ const common: CarWidgetDto[] = [{
   dataSource: WidgetDataSourceEnum.Server,
   serverSource: "some url",
   unitType: WidgetUnitType.Distance,
-  valueType: WidgetValueTypeEnum.Past,
-  subtitle: {ru: "№1129", en: "#1129"},
+  valueType: WidgetValueTypeEnum.Exact,
 }];
 
 export const widgets: CarWidgetDto[][] = [
@@ -40,6 +38,11 @@ export const widgets: CarWidgetDto[][] = [
     unit: {ru: "л", en: "l"},
     valueType: WidgetValueTypeEnum.Exact,
     warningLevel: 20,
+    maxLevel: 80,
+    warningText: {
+      ru: "Мало топлива",
+      en: "Refueling needed"
+    }
   }, {
     id: "maintenance",
     title: {ru: "Техобслуживание", en: "Maintenance"},
@@ -66,6 +69,11 @@ export const electricWidgets: CarWidgetDto[][] = [
     unit: {ru: "%", en: "%"},
     valueType: WidgetValueTypeEnum.Exact,
     warningLevel: 20,
+    maxLevel: 100,
+    warningText: {
+      ru: "Нужна подзарядка",
+      en: "Recharging needed"
+    }
   }],
   common,
 ];

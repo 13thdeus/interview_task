@@ -14,4 +14,6 @@ export interface ICarWidget {
   unitType: WidgetUnitType;
   unit?: LocalizedTextDto;
   warningLevel?: number;
+  warningText?: LocalizedTextDto;
+  maxLevel?: number;
 }

@@ -3,5 +3,4 @@ export enum WidgetValueTypeEnum {
   Feature = "feature",
   Past = "past",
   New = "new",
-  Distance = "distance",
 }

@@ -1,24 +1,36 @@
 import React, {FC} from "react";
 import {CarWidgetDto} from "../../../common/api";
-import {Brand, ImageResources} from "../../../common";
+import {Brand} from "../../../common";
 import {widgetData} from "../../../../data_mocks/widgetData";
-import {Image, ImageStyle, StyleSheet, View, ViewStyle} from "react-native";
-import {Colors, CommonStyles, DesignGridSize} from "../../../core";
+import {ImageStyle, StyleSheet, View, ViewStyle} from "react-native";
+import {Colors, CommonStyles, CurrencySymbol, DesignGridSize} from "../../../core";
+import {getTimeValue} from "../../../common/helpers/timeHelpers";
+import {useTranslation} from "react-i18next";
+import {WidgetValue} from "./WidgetValue";
 
-export const WidgetItem: FC<CarWidgetDto> = (widget) => {
+interface IProps {
+  widget: CarWidgetDto;
+  countInLine: number;
+}
+
+export const WidgetItem: FC<IProps> = ({countInLine, widget}) => {
   const widgetItemData = widgetData[widget.id];
+  const {t} = useTranslation();
+
+  console.log({widget, widgetItemData});
 
   return (
     <View style={styles.container}>
       <Brand.H4 text={widget.title} />
-      <View style={CommonStyles.row}>
-        {widget.warningLevel != null && widgetItemData.value <= widget.warningLevel &&
-          <Image source={ImageResources.widget_warning} style={styles.warningIcon} />}
-        <Brand.H6 text={widgetItemData.value} />
+      <WidgetValue widget={widget} widgetData={widgetItemData} countInLine={countInLine} />
+      <View style={{height: DesignGridSize * DesignGridSize / countInLine / 2}} />
+      <View style={CommonStyles.rowSpaceBetween}>
+        <View style={CommonStyles.flex1}>
+          <Brand.H3 text={widgetItemData.price?.toLocaleString() + ` ${CurrencySymbol}`} />
+          {widgetItemData.time && <Brand.H5 text={getTimeValue(t, widgetItemData.time)} color={Colors.secondaryText} />}
+          {widgetItemData.priceUnit && <Brand.H5 text={widgetItemData.priceUnit} color={Colors.secondaryText} />}
+        </View>
       </View>
-      <Brand.H3 text={widgetItemData.price} />
-      {widgetItemData.time && <Brand.H5 text={`${widgetItemData.time} sec`} color={Colors.secondaryText} />}
-      {widgetItemData.priceUnit && <Brand.H5 text={widgetItemData.priceUnit} />}
     </View>
   );
 };
@@ -31,6 +43,7 @@ const styles = StyleSheet.create({
     borderRadius: DesignGridSize * 2.5,
     elevation: 2,
     margin: DesignGridSize,
+    justifyContent: "space-between",
   } as ViewStyle,
   warningIcon: {
     width: 13,
