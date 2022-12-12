@@ -1,5 +1,5 @@
 import React, {FC} from "react";
-import {StyleSheet, View, ViewStyle} from "react-native";
+import {SafeAreaView, StyleSheet, View, ViewStyle} from "react-native";
 import {BottomTabBarProps} from "@react-navigation/bottom-tabs";
 import {AppTabBarButton} from "./AppTabBarButton";
 import {Colors, DesignGridSize} from "../../../core";
@@ -27,24 +27,32 @@ export const AppTabBar: FC<BottomTabBarProps> = ({state, descriptors, navigation
   };
 
   return (
-    <View style={styles.tabBar}>
-      {state.routes.map((route, index) => (
-        <AppTabBarButton
-          key={route.key}
-          tabBarIcon={descriptors[route.key].options.tabBarIcon}
-          label={descriptors[route.key].options.title || route.name}
-          onPress={onPress(route.key, route.name, state.index == index)}
-          onLongPress={onLongPress(route.key)}
-          isFocused={state.index == index}
-          tabBarAccessibilityLabel={descriptors[route.key].options.tabBarAccessibilityLabel}
-          tabBarTestID={descriptors[route.key].options.tabBarTestID}
-        />
-      ))}
+    <View style={styles.tabBarWrapper}>
+        <SafeAreaView style={styles.tabBar}>
+          {state.routes.map((route, index) => (
+            <AppTabBarButton
+              key={route.key}
+              tabBarIcon={descriptors[route.key].options.tabBarIcon}
+              label={descriptors[route.key].options.title || route.name}
+              onPress={onPress(route.key, route.name, state.index == index)}
+              onLongPress={onLongPress(route.key)}
+              isFocused={state.index == index}
+              tabBarAccessibilityLabel={descriptors[route.key].options.tabBarAccessibilityLabel}
+              tabBarTestID={descriptors[route.key].options.tabBarTestID}
+            />
+          ))}
+        </SafeAreaView>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
+  tabBarWrapper: {
+    position: "absolute",
+    bottom: 0,
+    left: 0,
+    right: 0,
+  } as ViewStyle,
   // eslint-disable-next-line react-native/no-color-literals
   tabBar: {
     flexDirection: "row",

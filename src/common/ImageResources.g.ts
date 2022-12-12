@@ -12,6 +12,7 @@ import {ImageURISource} from "react-native";
 export class MockIconsResources {
   static readonly auto: ImageURISource = require("../../resources/images/mockIcons/auto.png");
   static readonly fuel: ImageURISource = require("../../resources/images/mockIcons/fuel.png");
+  static readonly geo_mock: ImageURISource = require("../../resources/images/mockIcons/geo_mock.png");
   static readonly market: ImageURISource = require("../../resources/images/mockIcons/market.png");
   static readonly tech: ImageURISource = require("../../resources/images/mockIcons/tech.png");
   static readonly travel: ImageURISource = require("../../resources/images/mockIcons/travel.png");
