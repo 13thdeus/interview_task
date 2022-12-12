@@ -53,7 +53,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: DesignGridSize,
     borderWidth: 1,
     borderBottomWidth: 0,
-    borderColor: Colors.gradientSecondary,
+    borderColor: Colors.border,
     borderTopLeftRadius: DesignGridSize * 4,
     borderTopRightRadius: DesignGridSize * 4,
   } as ViewStyle,

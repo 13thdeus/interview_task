@@ -12,5 +12,11 @@ export const en = {
       travel: "Travel",
       market: "Market",
     },
+    date: {
+      defaultDate: "MM.DD.YYYY",
+    },
+    main: {
+      subscriptionUntil: "Subscribed until ",
+    },
   },
 };

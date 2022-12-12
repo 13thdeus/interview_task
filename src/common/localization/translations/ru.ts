@@ -12,5 +12,11 @@ export const ru = {
       travel: "Поездки",
       market: "Маркет",
     },
+    date: {
+      defaultDate: "DD.MM.YYYY",
+    },
+    main: {
+      subscriptionUntil: "Подписка до ",
+    },
   },
 };

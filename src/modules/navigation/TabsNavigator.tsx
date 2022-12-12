@@ -6,6 +6,7 @@ import {TabBarIcon} from "./components/TabBarIcon";
 import {TabBarResources} from "../../common";
 import {Colors} from "../../core";
 import {useTranslation} from "react-i18next";
+import {Main} from "../main/Main";
 
 const Tabs = createBottomTabNavigator();
 
@@ -23,7 +24,7 @@ export const TabsNavigator: FC = () => {
     >
       <Tabs.Screen
         name={"main"}
-        component={StubPage}
+        component={Main}
         options={{
           title: t("tabBarLabels.main").toString() || "",
           tabBarIcon: (props) => <TabBarIcon source={TabBarResources.main} {...props} />,
