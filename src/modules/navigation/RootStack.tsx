@@ -1,8 +1,8 @@
 import {FC} from "react";
 import {createNativeStackNavigator} from "@react-navigation/native-stack";
-import {Text} from "react-native";
 import {useAppSelector} from "../../core/store/store";
 import {TabsNavigator} from "./TabsNavigator";
+import {StubPage} from "../stub/stub_page";
 
 const Stack = createNativeStackNavigator();
 
@@ -12,7 +12,7 @@ export const RootStack: FC = () => {
 
   return (
     <Stack.Navigator initialRouteName={initialRouteName}>
-      <Stack.Screen name={"onboard"} component={() => <Text>onboard</Text>} />
+      <Stack.Screen name={"onboard"} component={StubPage} />
       <Stack.Screen name={"tabs"} component={TabsNavigator} />
     </Stack.Navigator>
   );

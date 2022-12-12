@@ -4,6 +4,7 @@ import {WidgetValueTypeEnum} from "./WidgetValueTypeEnum";
 import {WidgetUnitType} from "./WidgetUnitType";
 
 export interface ICarWidget {
+  id: string;
   title: LocalizedTextDto;
   subtitle?: LocalizedTextDto;
   icon?: string;

@@ -1,6 +1,7 @@
 import {CarWidgetDto, WidgetDataSourceEnum, WidgetUnitType, WidgetValueTypeEnum} from "../src/common/api";
 
-const common = [{
+const common: CarWidgetDto[] = [{
+  id: "fines",
   title: {ru: "Штрафы", en: "Fines"},
   icon: undefined,
   dataSource: WidgetDataSourceEnum.Server,
@@ -9,6 +10,7 @@ const common = [{
   valueType: WidgetValueTypeEnum.New,
   warningLevel: 1,
 }, {
+  id: "parking",
   title: {ru: "Парковка", en: "Parking"},
   icon: undefined,
   dataSource: WidgetDataSourceEnum.Server,
@@ -17,6 +19,7 @@ const common = [{
   valueType: WidgetValueTypeEnum.Past,
   subtitle: {ru: "№1129", en: "#1129"},
 }, {
+  id: "gas",
   title: {ru: "АЗС", en: "GAS Station"},
   icon: undefined,
   dataSource: WidgetDataSourceEnum.Server,
@@ -26,8 +29,9 @@ const common = [{
   subtitle: {ru: "№1129", en: "#1129"},
 }];
 
-export const petrolWidgets: CarWidgetDto[][] = [
+export const widgets: CarWidgetDto[][] = [
   [{
+    id: "fuel",
     title: {ru: "Заправить", en: "Fueling"},
     icon: undefined,
     dataSource: WidgetDataSourceEnum.Fuel,
@@ -37,6 +41,7 @@ export const petrolWidgets: CarWidgetDto[][] = [
     valueType: WidgetValueTypeEnum.Exact,
     warningLevel: 20,
   }, {
+    id: "maintenance",
     title: {ru: "Техобслуживание", en: "Maintenance"},
     subtitle: {ru: "Масло ДВС, фильтры", en: "Motor oil, filters"},
     icon: undefined,
@@ -52,6 +57,7 @@ export const petrolWidgets: CarWidgetDto[][] = [
 
 export const electricWidgets: CarWidgetDto[][] = [
   [{
+    id: "charge",
     title: {ru: "Зарядить", en: "Charge"},
     icon: undefined,
     dataSource: WidgetDataSourceEnum.Fuel,
