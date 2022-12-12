@@ -7,7 +7,7 @@ import {useTranslation} from "react-i18next";
 import {LocalizedTextDto} from "../../api/common/LocalizedTextDto";
 import {TFuncKeyApp} from "../../localization/localization";
 import {getLocalizedValue} from "../../localization/localizedTextHelper";
-import { Colors } from "../../../core";
+import {Colors, Fonts} from "../../../core";
 
 export interface ILabelProps extends TextProps {
   size: LabelSizes;
@@ -34,24 +34,26 @@ export const Label: FC<ILabelProps> = memo((props) => {
         baseStyle = {};
       }
 
+      let weightStyle = {};
+
       switch (props.weight) {
         case LabelWeights.Regular:
-          baseStyle.fontWeight = "400";
+          weightStyle = {fontFamily: Fonts.bandRegular};
           break;
         case LabelWeights.Medium:
-          baseStyle.fontWeight = "500";
+          weightStyle = {fontFamily: Fonts.bandMedium};
           break;
         case LabelWeights.Bold:
-          baseStyle.fontWeight = "700";
+          weightStyle = {fontFamily: Fonts.bandBold};
           break;
         case LabelWeights.EBold:
-          baseStyle.fontWeight = "900";
+          weightStyle = {fontFamily: Fonts.bandHeavy};
           break;
         default:
           break;
       }
 
-      return StyleSheet.flatten([baseStyle, props.color ? {color: props.color} : {color: Colors.text}, props.style]);
+      return StyleSheet.flatten([baseStyle, weightStyle, props.color ? {color: props.color} : {color: Colors.text}, props.style]);
     },
     [config, props.color, props.size, props.style, props.type, props.weight],
   );

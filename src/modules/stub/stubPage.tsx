@@ -3,6 +3,6 @@ import {Brand} from "../../common";
 
 export const StubPage: FC = () => {
   return (
-    <Brand.H2 text={"Genesis G70"} />
+    <Brand.H2 text={"Stub"} />
   );
 };

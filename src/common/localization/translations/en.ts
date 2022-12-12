@@ -5,5 +5,12 @@ export const en = {
       yes: "Yes",
       no: "No",
     },
+    tabBarLabels: {
+      main: "Main",
+      autos: "Cars",
+      services: "Services",
+      travel: "Travel",
+      market: "Market",
+    },
   },
 };
